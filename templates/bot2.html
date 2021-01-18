@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>newsbot</title>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+</script>
+<style>
+    .onmouse {
+        background: rgb(255, 249, 160)
+    }
+</style>
+{% endblock head %}
+
+
+{% block body %}
+<div style="max-height:90%; overflow:scroll; overflow-y:auto;overflow-x:auto; position:absolute; top: 50px; left:400px; padding-right:50px; width:500px; word-wrap:break-word"
+    id='content'>
+    shit
+</div>
+
+<table style="width:300px; font-size:10pt;border:1px solid #7f7f7f;" border="1" cellspacing="0" cellpadding="1"
+    data-mce-style="font-size: 10pt; border: 1px solid #7f7f7f;">
+    <th>
+
+    <td>날짜</td>
+    <td>제목</td>
+    </th>
+    {% for obj in objs %}
+
+
+
+
+    <tr id={{obj.ind}}>
+
+        </script>
+        <td>{{ obj.ind }}</td>
+        <td>{{ obj.date }}</td>
+        <td>
+            <p>{{ obj.title }} </p>
+            <script>
+
+     
+
+                $(document).ready(function () {
+                    $("#{{obj.ind}}").hover(function () {
+                        $("#{{obj.ind}}").toggleClass('onmouse');
+                    })
+                });
+
+            </script>
+        </td>
+        <!--
+        <td><a href = "/bot/{{obj.ind}}">{{obj.title}}</a></td>
+    -->
+
+
+    </tr>
+    {% endfor %}
+</table>
+
+{% for pagename in pagenames %}
+<a href='/bot/{{pagename}}/'>{{pagename}}</a><br>
+{% endfor %}
+
+
+<form action="/bot/" method="POST">
+    <input type="text" name="title" id="content">
+    <input type="text" name="article" id="content">
+
+    <input type="submit" value="Add">
+
+</form>
+<script>
+
+    var right = function(ind_t){
+        var objs = {{ objs | safe}};
+        var i = 0
+        var L = []
+        var obj = ''
+        for (obj in objs) {
+            if (objs[obj]['ind'] == ind_t) {
+                L = L + i
+            }
+            i = i + 1
+        }
+        obj = objs[L[0]]
+        var inside = obj.title + "<br><br>" + obj.date + "<br><br>" + obj.article + "<br><hr><br>" + obj.repl + '<br><hr><br><form action="/bot/repl" method="POST"><input name="repl" type="text" value="없음"></input><input type="submit" value="수정요청"></input><input name="ind" type="hidden" value="' + obj.ind + '"></input><input name="date" type="hidden" value="' + obj.date + '"></input><input type="hidden" name="v" value="bot2"></input></form>'
+        $('#content').html(inside)
+
+    }
+
+    $(document).ready(function(){
+        if(ind){
+            right(ind)
+        }
+    })
+    $('tr').on("click",  function(){
+        var clicked = this.id;
+        right(clicked)
+        })
+</script>
+
+
+{% endblock body %}
