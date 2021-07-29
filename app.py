@@ -88,8 +88,7 @@ def bot_v3(day_0):
 
         #폴더에 있는 파일 모두 검색해서 본문 아래쪽에 배열하기 위함 #
         pathnames = glob.glob("./data/date/*.csv", recursive=True)
-        pagenames = [re.findall(r'(?<=\\).+(?=\.)', x)[0] for x in pathnames] 
-
+        pagenames = [re.findall(r'(?<=\\).+(?=\.)', x)[0] for x in pathnames][::-1] 
         return render_template ("bot_v3.html", day_0=day_0, objs = objs, pagenames = pagenames)
 
 @app.route('/bot_v3/repl', methods = ['POST','GET'])
