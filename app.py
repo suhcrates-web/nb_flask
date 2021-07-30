@@ -17,7 +17,7 @@ def bot_v3port():
     day_0 = datetime.datetime.today().strftime("%Y-%m-%d")
     if request.method == "POST":
         with open('file111.csv','w') as f:
-            print(request.data)
+            # print(request.data)
         # if(request.form['day_0']):
             # day_0 = request.form['day_0']
             #이 request 건내주는게 되는지는 아직 실험 안해봄.
@@ -51,7 +51,7 @@ def bot_v3(day_0):
                 article = article.replace('\n','')
                 date = datetime.datetime.today().strftime("%Y-%m-%d %H:%M:%S")
                 line = [ind,'|', title,'|', article,'|', date,'|||',str(info),'\n']
-                print(line)
+                # print(line)
                 if ind =='0': #아무것도 없으면 헤더 만들어줌.
                     lines=['ind','|', 'title','|', 'article','|', 'date','|','repl','|','desk','|','info']
                     f.writelines(lines)
