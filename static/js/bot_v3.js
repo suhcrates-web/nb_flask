@@ -105,7 +105,7 @@ $(document).ready(function(){
 		// })		
 		
 	})
-})
+});
 
 // $(document).ready(function(){
 // 	$('form').on('submit', function(event){
@@ -114,4 +114,5 @@ $(document).ready(function(){
 // 	})
 
 // })
+
 

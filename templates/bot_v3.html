@@ -4,7 +4,9 @@
 <title>공시뉴스봇 - 서영빈 기자</title>
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"></script>
+
 </script>
+
 <script src="{{ url_for('static', filename='js/bot_v3.js') }}"></script>
 <style>
     .onmouse {
@@ -31,7 +33,12 @@
     id='content'>
     기사창
 </div>
-
+    <h6 style="line-height: 0.1px;">실시간 자동 모니터링, 작성, 알림</h6>
+    <h6 style="line-height: 0.1px;">텔레그렘 알림방: @suhcrates_gongshi</h6>
+    <h6 style="line-height: 0.1px;">개발자: 서영빈 연합인포맥스 기자</h6>
+    <h6 style="line-height: 0.1px;">개발문의, 건의사항 등 : 카카오톡 id: suhcrates1<h6>
+    <a style="line-height: 0.1px;" href="http://testbot.ddns.net:5233/sihwang/">종합 방 </a><span>   // </span>
+    <a id="jogun" style="line-height: 0.1px;" href="/bot_v3/condition/" >처리 가능 보고서 목록 및 처리 조건 </a>
 <h3 id='day_here'>{{day_0}}</h3>
 <table style="width:300px; font-size:10pt;border:1px solid #7f7f7f;" border="1" cellspacing="0" cellpadding="1"
     data-mce-style="font-size: 10pt; border: 1px solid #7f7f7f;">

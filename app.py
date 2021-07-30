@@ -28,6 +28,10 @@ def bot_v3port():
     else:
         return redirect('/bot_v3/'+day_0+'/')
 
+@app.route('/bot_v3/condition/')
+def condition():
+    return render_template ("jogun.html")
+
 @app.route('/bot_v3/<day_0>/', methods = ['POST','GET'])
 def bot_v3(day_0):
     if request.method == "POST":
